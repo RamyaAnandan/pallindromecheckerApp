@@ -1,2 +1,2 @@
-# pallindromecheckerApp
+# palindromecheckerApp
 // {
