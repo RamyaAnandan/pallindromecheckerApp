@@ -21,31 +21,37 @@ import java.util.*;
 
 public class pallindromecheckerApp {
     public static void main(String[] args) {
-        String input = "refer";
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("--- Palindrome Checker App ---");
+        System.out.print("Enter a string to check: ");
+        String input = scanner.nextLine();
 
-// Create a Deque to store characters
-        Deque<Character> deque = new ArrayDeque<>();
+        // Strengthening core concepts: Using recursion for validation
+        if (isPalindrome(input)) {
+            System.out.println("'" + input + "' is a palindrome.");
+        } else {
+            System.out.println("'" + input + "' is NOT a palindrome.");
+        }
+        scanner.close();
+    }
 
-// Add each character to the deque
-        for (char c : input.toCharArray()) {
-            deque.add(c);
+    /**
+     * UC9: Recursive Palindrome Checker
+     * Goal: Check palindrome using recursion.
+     */
+    public static boolean isPalindrome(String s) {
+        // Base Condition 1: An empty string or single character is a palindrome
+        if (s.length() <= 1) {
+            return true;
         }
 
-// Flag to track palindrome result
-        boolean isPalindrome = true;
-
-// Continue comparison while more than one element exists
-        while (deque.size() > 1) {
-            char first = deque.removeFirst();
-            char last = deque.removeLast();
-            if (first != last) {
-                isPalindrome =false;
-                break;
-            }
+        // Recursive Step: Compare start & end characters [Flow Step 1]
+        if (s.charAt(0) == s.charAt(s.length() - 1)) {
+            // Recursive call with smaller subproblem (the middle substring)
+            return isPalindrome(s.substring(1, s.length() - 1));
         }
 
-// Print the result (as shown in the image output)
-        System.out.println("Input: " + input);
-        System.out.println("Is Palindrome? " + isPalindrome);
+        // Base Condition 2: Characters don't match, not a palindrome [Flow Step 2]
+        return false;
     }
 }
