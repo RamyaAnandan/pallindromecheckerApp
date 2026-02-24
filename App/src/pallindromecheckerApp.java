@@ -37,7 +37,8 @@ public class pallindromecheckerApp {
         boolean isPalindrome = true;
 
         // Iterate again through original string.
-        for (char c : input.toCharArray()) {
+        for (char c : input.toCharArray())
+        {
             // ... (code to pop from stack and compare)
         }
     }
