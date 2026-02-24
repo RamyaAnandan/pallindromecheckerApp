@@ -33,6 +33,8 @@ public class pallindromecheckerApp {
         // Continue comparison until pointers cross.
         while (start < end) {
             if (chars[start] != chars[end]) {
+
+
                 isPalindrome = false;
                 break;
             }
