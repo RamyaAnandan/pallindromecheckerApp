@@ -18,34 +18,28 @@
 
 
 import java .util.Scanner;
+import java.util.Stack;
+
 public class pallindromecheckerApp {
     public static void main(String[] args) {
         // Declare and initialize the input string.
-        String input = "radar";
-        // Convert the string into a character array.
-        char[] chars = input.toCharArray();
-        // Initialize pointer at the beginning.
-        int start = 0;
-        // Initialize pointer at the end.
-        int end = chars.length - 1;
-        // Assume palindrome initially.
-        boolean isPalindrome = true;
-        // Continue comparison until pointers cross.
-        while (start < end) {
-            if (chars[start] != chars[end]) {
+        String input = "noon";
 
+        // Create a Stack to store characters.
+        Stack<Character> stack = new Stack<>();
 
-                isPalindrome = false;
-                break;
-            }
-            start++;
-            end--;
+        // Push each character of the string into the stack.
+        for (char c : input.toCharArray()) {
+            // ... (code to push character onto stack)
         }
 
-        if (isPalindrome) {
-            System.out.println("\"" + input + "\" is a palindrome.");
-        } else {
-            System.out.println("\"" + input + "\" is not a palindrome.");
+        // Assume palindrome initially.
+        boolean isPalindrome = true;
+
+        // Iterate again through original string.
+        for (char c : input.toCharArray())
+        {
+            // ... (code to pop from stack and compare)
         }
     }
 }
