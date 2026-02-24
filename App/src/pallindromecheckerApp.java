@@ -39,7 +39,7 @@ public class pallindromecheckerApp {
             char first = deque.removeFirst();
             char last = deque.removeLast();
             if (first != last) {
-                isPalindrome = false;
+                isPalindrome =false;
                 break;
             }
         }
