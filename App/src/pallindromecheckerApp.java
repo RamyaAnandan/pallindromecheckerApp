@@ -21,37 +21,18 @@ import java.util.*;
 
 public class pallindromecheckerApp {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("--- Palindrome Checker App ---");
-        System.out.print("Enter a string to check: ");
-        String input = scanner.nextLine();
+        String input = "man a plan a canal Panama";
+        String normalized = input.toLowerCase().replaceAll("[^a-z0-9]", "");
 
-        // Strengthening core concepts: Using recursion for validation
-        if (isPalindrome(input)) {
-            System.out.println("'" + input + "' is a palindrome.");
-        } else {
-            System.out.println("'" + input + "' is NOT a palindrome.");
+        boolean isPalindrome = true;
+        for (int i = 0; i < normalized.length() / 2; i++) {
+            // Compare symmetric characters
+            if (normalized.charAt(i) != normalized.charAt(normalized.length() - 1 - i)) {
+                isPalindrome = false;
+                break; // Exit the loop as soon as a mismatch is found
+            }
         }
-        scanner.close();
-    }
-
-    /**
-     * UC9: Recursive Palindrome Checker
-     * Goal: Check palindrome using recursion.
-     */
-    public static boolean isPalindrome(String s) {
-        // Base Condition 1: An empty string or single character is a palindrome
-        if (s.length() <= 1) {
-            return true;
-        }
-
-        // Recursive Step: Compare start & end characters [Flow Step 1]
-        if (s.charAt(0) == s.charAt(s.length() - 1)) {
-            // Recursive call with smaller subproblem (the middle substring)
-            return isPalindrome(s.substring(1, s.length() - 1));
-        }
-
-        // Base Condition 2: Characters don't match, not a palindrome [Flow Step 2]
-        return false;
+        System.out.println("Input: " + input + " " + isPalindrome);
+        System.out.println("Is Palindrome? " + isPalindrome);
     }
 }
