@@ -1,38 +1,76 @@
 /**
- MAIN CLASS UseCase PalindromeApp
- Use Case 1: Application Entry & Welcome Message
- Description:
- This class represents the entry point of the
- Palindrome Checker Management System.
- At this stage, the application:
- Starts execution from the main() method
- Displays a welcome message
- Shows application version
- No palindrome logic is implemented yet.
- The goal is to establish a clear startup flow.
- @author Ramya Anandan
- @version 1.0
- **/
-
+ *MAIN CLASS UseCase 11: Palindrome Checker App
+ * Use Case 11: Object-Oriented Palindrome Service
+ * Description:
+ * This class demonstrates palindrome validation using
+ * object-oriented design.
+ * The palindrome Logic is encapsulated inside a
+ * PalindromeService class.
+ * This improves:
+ * * Reusability
+ * Readability
+ * * Separation of concerns
+ * Bauthor Developer
+ * @version 11.0
+ * */
 
 
 
 import java.util.*;
-
 public class pallindromecheckerApp {
-    public static void main(String[] args) {
-        String input = "man a plan a canal Panama";
-        String normalized = input.toLowerCase().replaceAll("[^a-z0-9]", "");
+    /**
+     * Application entry point for UC3.
+     *
+     * @param args Command-line arguments
+     */
 
-        boolean isPalindrome = true;
-        for (int i = 0; i < normalized.length() / 2; i++) {
-            // Compare symmetric characters
-            if (normalized.charAt(i) != normalized.charAt(normalized.length() - 1 - i)) {
-                isPalindrome = false;
-                break; // Exit the loop as soon as a mismatch is found
+    // 1. Create PalindromeChecker class (Encapsulation)
+    public static class PalindromeChecker {
+        /**
+         * UC 11: using encapsulation to split and check
+         */
+
+        // 2. Expose checkPalindrome() method
+        public boolean checkPalindrome(String text) {
+            if (text == null || text.trim().isEmpty()) return false;
+
+            // Internal Data Structure: Stack (as per UC11 requirements)
+            Stack<Character> stack = new Stack<>();
+
+            // Clean the string: remove non-alphanumeric and make lowercase
+            String clean = text.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
+
+            // Push all characters onto the stack
+            for (char c : clean.toCharArray()) {
+                stack.push(c);
             }
+
+            // Build the reversed string by popping from the stack
+            StringBuilder reversed = new StringBuilder();
+            while (!stack.isEmpty()) {
+                reversed.append(stack.pop());
+            }
+
+            // Single Responsibility Principle: Logic is isolated here
+            return clean.equals(reversed.toString());
         }
-        System.out.println("Input: " + input + " " + isPalindrome);
-        System.out.println("Is Palindrome? " + isPalindrome);
+    }
+
+    // Console-based Driver
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        PalindromeChecker checker = new PalindromeChecker();
+
+        System.out.println("=== Palindrome Checker App ===");
+        System.out.print("Enter text: ");
+        String input = scanner.nextLine();
+
+        if (checker.checkPalindrome(input)) {
+            System.out.println("Result: It is a palindrome.");
+        } else {
+            System.out.println("Result: Not a palindrome.");
+        }
+
+        scanner.close();
     }
 }
