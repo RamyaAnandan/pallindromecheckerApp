@@ -1,5 +1,3 @@
-import java.util.Stack;
-
 /**
  MAIN CLASS UseCase13PalindromeCheckenApp
  Use Case 13: Performance Comparison
@@ -18,6 +16,7 @@ import java.util.Stack;
  @version 13.0
 
  */
+import java.util.*;
 class PalindromeCheckerApp {
 
     public static void main(String[] args) {
@@ -68,7 +67,7 @@ class StackStrategy implements PalindromeStrategy {
     public boolean check(String input) {
 
         // Create a stack to store characters
-        Stack<Character> stack = new git branchStack<>();
+        Stack<Character> stack = new Stack<>();
 
         // Push each character onto the stack
         for (char c : input.toCharArray()) {
